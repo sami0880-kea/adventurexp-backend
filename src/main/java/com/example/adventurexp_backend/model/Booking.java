@@ -19,6 +19,5 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
     private int activityId;
-    private int userId;
     private Date bookedTime;
 }

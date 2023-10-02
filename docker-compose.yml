@@ -1,0 +1,28 @@
+version: '1'
+services:
+  java-app:
+    build:
+      context: .
+      dockerfile: Dockerfile.java
+    environment:
+      - PROFILE=docker-compose
+    image: java-app
+    ports:
+      - "8080:8080"
+    networks:
+      - adventurexp
+    depends_on:
+      - mysql-server
+  mysql-server:
+    build:
+      context: .
+      dockerfile: Dockerfile.mysql
+    image: mysql-server
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    networks:
+      - adventurexp
+networks:
+  adventurexp:

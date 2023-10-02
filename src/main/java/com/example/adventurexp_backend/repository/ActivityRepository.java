@@ -19,7 +19,7 @@ public class ActivityRepository {
         List<Activity> activities = new ArrayList< >();
         try (Connection con = DBConnector.getConnection()) {
 
-            String SQL = "SELECT * FROM activities";
+            String SQL = "SELECT * FROM activity";
             PreparedStatement pstmt = con.prepareStatement(SQL);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
