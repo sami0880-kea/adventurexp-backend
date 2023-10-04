@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity
@@ -18,6 +19,13 @@ public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int bookingId;
+    private String name;
+    private int participants;
+    private String email;
+    private int phoneNumber;
+    private LocalTime date;
+    private Date time;
+    private String comment;
     private int activityId;
-    private Date bookedTime;
+
 }

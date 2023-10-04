@@ -1,17 +1,38 @@
 CREATE DATABASE IF NOT EXISTS adventurexp;
 use adventurexp;
 
-CREATE TABLE activity (
-    activity_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    image VARCHAR(255),
-    description TEXT,
-    min_age INT
+CREATE TABLE Activity (
+                          id INT AUTO_INCREMENT PRIMARY KEY,
+                          name VARCHAR(255) NOT NULL,
+                          image VARCHAR(255),
+                          description TEXT,
+                          minAge INT
 );
 
-CREATE TABLE booking (
-    booking_id INT AUTO_INCREMENT PRIMARY KEY,
-    activity_id INT,
-    booked_time DATETIME NOT NULL,
-    FOREIGN KEY (activity_id) REFERENCES activity(activity_id)
+CREATE TABLE Booking (
+                         bookingId INT AUTO_INCREMENT PRIMARY KEY,
+                         name VARCHAR(255) NOT NULL,
+                         participants INT,
+                         email VARCHAR(255),
+                         phoneNumber INT,
+                         date DATE,
+                         time TIME,
+                         comment TEXT,
+                         activityId INT,
+                         FOREIGN KEY (activityId) REFERENCES Activity(id)
+);
+
+CREATE TABLE Employee (
+                          id INT AUTO_INCREMENT PRIMARY KEY,
+                          name VARCHAR(255) NOT NULL,
+                          email VARCHAR(255) UNIQUE NOT NULL,
+                          password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Equipment (
+                           equipmentId INT AUTO_INCREMENT PRIMARY KEY,
+                           name VARCHAR(255) NOT NULL,
+                           amount INT NOT NULL,
+                           activityId INT,
+                           FOREIGN KEY (activityId) REFERENCES Activity(id)
 );
