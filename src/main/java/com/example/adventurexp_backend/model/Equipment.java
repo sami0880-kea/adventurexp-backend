@@ -3,8 +3,6 @@ package com.example.adventurexp_backend.model;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Date;
-
 @Entity
 @Getter
 @Setter
@@ -19,6 +17,6 @@ public class Equipment {
     private int equipmentAmountId;
 
     @OneToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "activity", referencedColumnName = "id")
     private Activity activity;
 }
