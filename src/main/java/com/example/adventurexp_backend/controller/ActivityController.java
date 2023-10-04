@@ -19,6 +19,11 @@ public class ActivityController {
         activityRepository = new ActivityRepository();
     }
 
+    @GetMapping(path = "/")
+    public ResponseEntity<String> index() {
+        return new ResponseEntity<>("Hello World", HttpStatus.OK);
+    }
+
     @GetMapping(path = "/activities")
     public ResponseEntity<List<Activity>> getActivities() {
         List<Activity> activities = activityRepository.viewActivities();
