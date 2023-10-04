@@ -23,11 +23,11 @@ public class ActivityRepository {
             PreparedStatement pstmt = con.prepareStatement(SQL);
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("activity_id");
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 String description = rs.getString("description");
                 String image = rs.getString("image");
-                int minAge = rs.getInt("min_age");
+                int minAge = rs.getInt("minAge");
                 activities.add(new Activity(id, name, description, image, minAge));
             }
             return activities;
