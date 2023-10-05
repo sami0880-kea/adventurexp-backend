@@ -20,5 +20,6 @@ public class Activity {
     private String image;
     private String description;
     private int minAge;
+    private int price;
 
 }

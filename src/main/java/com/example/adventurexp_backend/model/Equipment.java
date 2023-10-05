@@ -15,8 +15,5 @@ public class Equipment {
     private int equipmentId;
     private String equipmentName;
     private int equipmentAmountId;
-
-    @OneToOne
-    @JoinColumn(name = "activity", referencedColumnName = "id")
-    private Activity activity;
+    private int activityId;
 }
