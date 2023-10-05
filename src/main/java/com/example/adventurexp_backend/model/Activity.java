@@ -20,5 +20,14 @@ public class Activity {
     private String image;
     private String description;
     private int minAge;
+    private int price;
+
+    public Activity(String name, String image, String description, int minAge, int price){
+        this.name = name;
+        this.image = image;
+        this.description = description;
+        this.minAge = minAge;
+        this.price = price;
+    }
 
 }

@@ -1,7 +1,7 @@
 package com.example.adventurexp_backend.controller;
 
 import com.example.adventurexp_backend.model.Activity;
-import com.example.adventurexp_backend.repository.ActivityRepository;
+import com.example.adventurexp_backend.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +13,10 @@ import java.util.List;
 @Controller
 public class ActivityController {
     @Autowired
-    ActivityRepository activityRepository;
+    ActivityService activityService;
 
-    public ActivityController() {
-        activityRepository = new ActivityRepository();
+    /*public ActivityController() {
+        activityService = new ActivityService(activityConverter);
     }
 
     @GetMapping(path = "/")
@@ -26,7 +26,7 @@ public class ActivityController {
 
     @GetMapping(path = "/activities")
     public ResponseEntity<List<Activity>> getActivities() {
-        List<Activity> activities = activityRepository.viewActivities();
+        List<Activity> activities = activityService.viewActivities();
         return new ResponseEntity<>(activities, HttpStatus.OK);
-    }
+    }*/
 }
