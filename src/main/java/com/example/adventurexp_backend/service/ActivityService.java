@@ -10,14 +10,12 @@ import org.springframework.stereotype.Service;
 public class ActivityService {
     private final ActivityConverter activityConverter;
     private final ActivityRepository activityRepository;
-    DBConnector connector;
 
     @Autowired
     public ActivityService(ActivityConverter activityConverter, ActivityRepository activityRepository, DBConnector connector)
     {
         this.activityConverter = activityConverter;
         this.activityRepository = activityRepository;
-        this.connector = connector;
     }
 
 

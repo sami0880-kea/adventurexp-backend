@@ -27,6 +27,6 @@ public class Booking {
     private Date time;
     private String comment;
     private int activityId;
-    private int totalPrice;
+    private int total;
 
 }
