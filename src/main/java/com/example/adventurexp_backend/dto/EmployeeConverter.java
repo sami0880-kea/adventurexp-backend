@@ -8,6 +8,7 @@ public class EmployeeConverter {
 
     public Employee toEntity(EmployeeDTO employeeDTO){
         return new Employee(
+                employeeDTO.id(),
                 employeeDTO.email(),
                 employeeDTO.password()
         );
