@@ -1,7 +1,9 @@
 package com.example.adventurexp_backend.controller;
 
+import com.example.adventurexp_backend.dto.ActivityDTO;
 import com.example.adventurexp_backend.model.Activity;
 import com.example.adventurexp_backend.repository.ActivityRepository;
+import com.example.adventurexp_backend.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,7 @@ import java.util.List;
 @RestController
 public class ActivityController {
     @Autowired
-    ActivityRepository activityRepository;
+    ActivityService activityService;
 
     @GetMapping(path = "/")
     public ResponseEntity<String> index() {
@@ -21,8 +23,8 @@ public class ActivityController {
     }
 
     @GetMapping(path = "/activities")
-    public ResponseEntity<List<Activity>> getActivities() {
-        List<Activity> activities = activityRepository.findAll();
+    public ResponseEntity<List<ActivityDTO>> getActivities() {
+        List<ActivityDTO> activities = activityService.getAllActivities();
         return new ResponseEntity<>(activities, HttpStatus.OK);
     }
 }
