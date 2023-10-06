@@ -20,10 +20,10 @@ public class Employee {
     private String email;
     private String password;
 
-    public Employee(String email, String password){
+    public Employee(int id, String name, String email){
+        this.id = id;
         this.name = name;
         this.email = email;
-        this.password = password;
     }
 
 }
