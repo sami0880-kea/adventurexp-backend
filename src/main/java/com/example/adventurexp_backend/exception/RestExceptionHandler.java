@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class RealExceptionHandler {
+public class RestExceptionHandler {
     @ExceptionHandler(EmployeeNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
 
