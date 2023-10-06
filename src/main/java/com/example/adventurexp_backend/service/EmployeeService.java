@@ -7,7 +7,9 @@ import com.example.adventurexp_backend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -28,6 +30,25 @@ public class EmployeeService {
             return employeeConverter.toDTO(employee);
         } else {
             throw new EmployeeNotFoundException("Employee not found with Id " + id);
+        }
+    }
+
+    public List<EmployeeDTO> getAllEmployees(){
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream()
+                .map(employeeConverter::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    public EmployeeDTO updateEmployee(int id, EmployeeDTO employeeDTO){
+        Optional<Employee> existingEmployee = employeeRepository.findById(id);
+        if (existingEmployee.isPresent()){
+            Employee employeeToUpdate = employeeConverter.toEntity(employeeDTO);
+            employeeToUpdate.setId(id);
+            Employee savedEmployee = employeeRepository.save(employeeToUpdate);
+            return employeeConverter.toDTO(savedEmployee);
+        } else {
+            throw new EmployeeNotFoundException("Employee not found with id " + id);
         }
     }
 }
