@@ -1,3 +1,4 @@
+DROP DATABASE IF EXISTS adventurexp;
 CREATE DATABASE IF NOT EXISTS adventurexp;
 use adventurexp;
 
@@ -6,7 +7,8 @@ CREATE TABLE Activity (
                           name VARCHAR(255) NOT NULL,
                           image VARCHAR(255),
                           description TEXT,
-                          minAge INT
+                          min_age INT,
+                          price INT
 );
 
 CREATE TABLE Booking (
@@ -19,6 +21,7 @@ CREATE TABLE Booking (
                          time TIME,
                          comment TEXT,
                          activityId INT,
+                         total INT,
                          FOREIGN KEY (activityId) REFERENCES Activity(id)
 );
 
