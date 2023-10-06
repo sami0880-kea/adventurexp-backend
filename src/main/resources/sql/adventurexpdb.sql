@@ -12,17 +12,17 @@ CREATE TABLE Activity (
 );
 
 CREATE TABLE Booking (
-                         bookingId INT AUTO_INCREMENT PRIMARY KEY,
+                         booking_id INT AUTO_INCREMENT PRIMARY KEY,
                          name VARCHAR(255) NOT NULL,
                          participants INT,
                          email VARCHAR(255),
-                         phoneNumber INT,
+                         phone_number INT,
                          date DATE,
                          time TIME,
                          comment TEXT,
-                         activityId INT,
+                         activity_id INT,
                          total INT,
-                         FOREIGN KEY (activityId) REFERENCES Activity(id)
+                         FOREIGN KEY (activity_id) REFERENCES Activity(id)
 );
 
 CREATE TABLE Employee (
@@ -33,9 +33,9 @@ CREATE TABLE Employee (
 );
 
 CREATE TABLE Equipment (
-                           equipmentId INT AUTO_INCREMENT PRIMARY KEY,
+                           equipment_id INT AUTO_INCREMENT PRIMARY KEY,
                            name VARCHAR(255) NOT NULL,
                            amount INT NOT NULL,
-                           activityId INT,
-                           FOREIGN KEY (activityId) REFERENCES Activity(id)
+                           activity_id INT,
+                           FOREIGN KEY (activity_id) REFERENCES Activity(id)
 );
