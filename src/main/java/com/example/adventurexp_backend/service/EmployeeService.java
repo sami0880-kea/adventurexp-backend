@@ -51,5 +51,14 @@ public class EmployeeService {
             throw new EmployeeNotFoundException("Employee not found with id " + id);
         }
     }
+
+    public void deleteEmployee(int id) {
+        Optional<Employee> employee = employeeRepository.findById(id);
+        if (employee.isPresent()){
+            employeeRepository.deleteById(id);
+        } else {
+            throw new EmployeeNotFoundException("Employee not found with id: " + id);
+        }
+    }
 }
 
