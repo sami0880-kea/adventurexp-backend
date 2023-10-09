@@ -14,8 +14,8 @@ public class Equipment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private int availableAmount;
-    private int bookedAmount;
+    private boolean status;
     private int price;
     private int activityId;
+
 }

@@ -1,15 +1,16 @@
 package com.example.adventurexp_backend.dto;
 
 import com.example.adventurexp_backend.model.Equipment;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EquipmentConverter {
 
     public Equipment toEntity(EquipmentDTO equipmentDTO){
         return new Equipment(
                 equipmentDTO.id(),
                 equipmentDTO.name(),
-                equipmentDTO.availableAmount(),
-                equipmentDTO.bookedAmount(),
+                equipmentDTO.status(),
                 equipmentDTO.price(),
                 equipmentDTO.activityId()
         );
@@ -19,8 +20,7 @@ public class EquipmentConverter {
         return new EquipmentDTO(
                 equipment.getId(),
                 equipment.getName(),
-                equipment.getAvailableAmount(),
-                equipment.getBookedAmount(),
+                equipment.isStatus(),
                 equipment.getPrice(),
                 equipment.getActivityId()
         );

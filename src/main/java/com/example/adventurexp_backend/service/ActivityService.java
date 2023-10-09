@@ -1,11 +1,8 @@
 package com.example.adventurexp_backend.service;
 import com.example.adventurexp_backend.dto.ActivityConverter;
 import com.example.adventurexp_backend.dto.ActivityDTO;
-import com.example.adventurexp_backend.dto.EmployeeDTO;
-import com.example.adventurexp_backend.exception.ActivityNotFoundException;
-import com.example.adventurexp_backend.exception.EmployeeNotFoundException;
+import com.example.adventurexp_backend.exception.NotFoundException;
 import com.example.adventurexp_backend.model.Activity;
-import com.example.adventurexp_backend.model.Employee;
 import com.example.adventurexp_backend.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -33,7 +30,7 @@ public class ActivityService {
             Activity activity = activityOptional.get();
             return activityConverter.toDTO(activityOptional.get());
         } else {
-            throw new ActivityNotFoundException("Activity not found with Id " + id);
+            throw new NotFoundException("Activity not found with Id " + id);
         }
     }
 
@@ -52,7 +49,7 @@ public class ActivityService {
             Activity savedActivity = activityRepository.save(activityToUpdate);
             return activityConverter.toDTO(savedActivity);
         } else {
-            throw new ActivityNotFoundException("Employee not found with id " + id);
+            throw new NotFoundException("Employee not found with id " + id);
         }
     }
 
@@ -61,7 +58,7 @@ public class ActivityService {
         if (activity.isPresent()) {
             activityRepository.deleteById(id);
         } else {
-            throw new ActivityNotFoundException("Activity not found with id: " + id);
+            throw new NotFoundException("Activity not found with id: " + id);
         }
 
     }

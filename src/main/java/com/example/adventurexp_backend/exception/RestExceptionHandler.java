@@ -12,10 +12,10 @@ import java.util.Map;
 
 @ControllerAdvice
 public class RestExceptionHandler {
-    @ExceptionHandler(EmployeeNotFoundException.class)
+    @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
 
-    public ResponseEntity<Object> handleEmployeeNotFoundException(EmployeeNotFoundException exception) {
+    public ResponseEntity<Object> handleNotFoundException(NotFoundException exception) {
         Map<String, Object> responseBody = new HashMap<>();
         responseBody.put("timeStamp", LocalDateTime.now());
         responseBody.put("message", exception.getMessage());

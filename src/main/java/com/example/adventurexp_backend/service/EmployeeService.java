@@ -1,7 +1,7 @@
 package com.example.adventurexp_backend.service;
 import com.example.adventurexp_backend.dto.EmployeeConverter;
 import com.example.adventurexp_backend.dto.EmployeeDTO;
-import com.example.adventurexp_backend.exception.EmployeeNotFoundException;
+import com.example.adventurexp_backend.exception.NotFoundException;
 import com.example.adventurexp_backend.model.Employee;
 import com.example.adventurexp_backend.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class EmployeeService {
             Employee employee = employeeOptional.get();
             return employeeConverter.toDTO(employeeOptional.get());
         } else {
-            throw new EmployeeNotFoundException("Employee not found with Id " + id);
+            throw new NotFoundException("Employee not found with Id " + id);
         }
     }
 
@@ -48,7 +48,7 @@ public class EmployeeService {
             Employee savedEmployee = employeeRepository.save(employeeToUpdate);
             return employeeConverter.toDTO(savedEmployee);
         } else {
-            throw new EmployeeNotFoundException("Employee not found with id " + id);
+            throw new NotFoundException("Employee not found with id " + id);
         }
     }
 
@@ -57,7 +57,7 @@ public class EmployeeService {
         if (employee.isPresent()){
             employeeRepository.deleteById(id);
         } else {
-            throw new EmployeeNotFoundException("Employee not found with id: " + id);
+            throw new NotFoundException("Employee not found with id: " + id);
         }
     }
 }
