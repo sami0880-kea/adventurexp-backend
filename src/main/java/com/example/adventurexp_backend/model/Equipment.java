@@ -12,8 +12,10 @@ import lombok.*;
 public class Equipment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int equipmentId;
-    private String equipmentName;
-    private int equipmentAmountId;
+    private int id;
+    private String name;
+    private int availableAmount;
+    private int bookedAmount;
+    private int price;
     private int activityId;
 }
