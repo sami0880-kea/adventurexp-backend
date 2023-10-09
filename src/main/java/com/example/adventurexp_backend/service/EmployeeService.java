@@ -27,7 +27,7 @@ public class EmployeeService {
         Optional<Employee> employeeOptional = employeeRepository.findById(id);
         if (employeeOptional.isPresent()) {
             Employee employee = employeeOptional.get();
-            return employeeConverter.toDTO(employee);
+            return employeeConverter.toDTO(employeeOptional.get());
         } else {
             throw new EmployeeNotFoundException("Employee not found with Id " + id);
         }
