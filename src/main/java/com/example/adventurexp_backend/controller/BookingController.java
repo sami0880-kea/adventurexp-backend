@@ -1,6 +1,6 @@
 package com.example.adventurexp_backend.controller;
 
-import com.example.adventurexp_backend.dto.ActivityDTO;
+import com.example.adventurexp_backend.dto.BookingDTO;
 import com.example.adventurexp_backend.dto.BookingDTO;
 import com.example.adventurexp_backend.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,27 @@ public class BookingController {
     @Autowired
     BookingService bookingService;
 
-    @GetMapping("/bookings")
+
+    @GetMapping ("/booking/{id}")
+    public ResponseEntity<BookingDTO> getBookingById(@PathVariable("id") int id) {
+        BookingDTO bookingDTO = bookingService.getBookingById(id);
+        return ResponseEntity.ok(bookingDTO);
+    }
+    @GetMapping("/booking")
     public ResponseEntity<List<BookingDTO>> getBookings() {
         List<BookingDTO> bookings = bookingService.getAllBookings();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
+    @PutMapping("/booking/{id}")
+    public ResponseEntity<BookingDTO> putBooking(@PathVariable("id")int id, @RequestBody BookingDTO bookingDTO){
+        BookingDTO updatedBookingDTO = bookingService.updateBooking(id, bookingDTO);
+        return ResponseEntity.ok(updatedBookingDTO);
+    }
+
+    @DeleteMapping("/booking/{id}")
+    public ResponseEntity<Void> deleteBooking(@PathVariable("id") int id) {
+        bookingService.deleteBooking(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
+
