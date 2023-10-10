@@ -23,8 +23,8 @@ public class Booking {
     private int participants;
     private String email;
     private int phoneNumber;
-    private LocalTime date;
-    private Date time;
+    private Date date;
+    private LocalTime time;
     private String comment;
     private int activityId;
     private int total;
