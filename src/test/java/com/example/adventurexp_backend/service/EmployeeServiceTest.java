@@ -111,8 +111,8 @@ class EmployeeServiceTest {
         EmployeeDTO resultEmployeeDTO = employeeService.createEmployee(employeeConverter.toDTO(
                 new Employee(
                         0,
-                        "nichlas",
-                        "nichlas@email.com",
+                        "Nichlas",
+                        "Nichlas@email.com",
                         "123"
                 )));
         assertEquals(69, resultEmployeeDTO.id());
@@ -121,6 +121,14 @@ class EmployeeServiceTest {
 
     @Test
     void updateEmployee() {
+        EmployeeDTO resultEmployeeDTO = employeeService.updateEmployee(1, employeeConverter.toDTO(
+                new Employee(
+                        1,
+                        "John Doe",
+                        "JohnDoe@email.com",
+                        "1234"
+                )
+        ));
 
     }
 
