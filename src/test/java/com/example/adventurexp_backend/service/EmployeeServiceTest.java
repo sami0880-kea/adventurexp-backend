@@ -19,8 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doThrow;
 
 @SpringBootTest
@@ -134,5 +133,13 @@ class EmployeeServiceTest {
 
     @Test
     void deleteEmployee() {
+        // Act
+        assertDoesNotThrow(() -> employeeService.deleteEmployee(1));
+        // Assert
+        Optional<Employee> deletedEmployee = mockedEmployeeRepository.findById(1);
+        assertTrue(deletedEmployee.isPresent());
+        // Check that the employee with ID 1 is deleted
+        assertThrows(NotFoundException.class, () -> employeeService.deleteEmployee(69));
     }
+
 }
