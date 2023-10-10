@@ -52,6 +52,13 @@ public class EmployeeService {
         }
     }
 
+    public EmployeeDTO createEmployee(EmployeeDTO employeeDTO){
+        Employee employeeToSave = employeeConverter.toEntity(employeeDTO);
+        employeeToSave.setId(0);
+        Employee savedEmployee = employeeRepository.save(employeeToSave);
+        return employeeConverter.toDTO(savedEmployee);
+    }
+
     public void deleteEmployee(int id) {
         Optional<Employee> employee = employeeRepository.findById(id);
         if (employee.isPresent()){

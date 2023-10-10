@@ -106,6 +106,18 @@ class EmployeeServiceTest {
         assertThrows(NotFoundException.class, () -> employeeService.getEmployeeById(3));
     }
 
+    @Test
+    void createEmployee() {
+        EmployeeDTO resultEmployeeDTO = employeeService.createEmployee(employeeConverter.toDTO(
+                new Employee(
+                        0,
+                        "nichlas",
+                        "nichlas@email.com",
+                        "123"
+                )));
+        assertEquals(69, resultEmployeeDTO.id());
+    }
+
 
     @Test
     void updateEmployee() {
