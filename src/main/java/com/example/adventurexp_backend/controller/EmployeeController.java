@@ -35,6 +35,12 @@ public class EmployeeController {
         return ResponseEntity.ok(updatedEmployeeDTO);
     }
 
+    @PostMapping("/employee")
+    public ResponseEntity<EmployeeDTO> postEmployee(@RequestBody EmployeeDTO employeeDTO){
+        EmployeeDTO createdEmployee = employeeService.createEmployee(employeeDTO);
+        return new ResponseEntity<>(createdEmployee, HttpStatus.CREATED);
+    }
+
     @DeleteMapping("/employee/{id}")
     public ResponseEntity<Void> deleteEmployee(@PathVariable("id") int id) {
         employeeService.deleteEmployee(id);

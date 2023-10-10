@@ -1,6 +1,7 @@
 package com.example.adventurexp_backend.controller;
 
 import com.example.adventurexp_backend.dto.ActivityDTO;
+import com.example.adventurexp_backend.dto.BookingDTO;
 import com.example.adventurexp_backend.dto.EmployeeDTO;
 import com.example.adventurexp_backend.service.ActivityService;
 import com.example.adventurexp_backend.service.EmployeeService;
@@ -25,10 +26,16 @@ public class ActivityController {
         return ResponseEntity.ok(activityDTO);
     }
 
-    @GetMapping("/activity")
+    @GetMapping("/activities")
     public ResponseEntity<List<ActivityDTO>> getAllActivity(){
         List<ActivityDTO> activityDTOList = activityService.getAllActivities();
         return new ResponseEntity<>(activityDTOList, HttpStatus.OK);
+    }
+
+    @PostMapping("/activity")
+    public ResponseEntity<ActivityDTO> postActivity(@RequestBody ActivityDTO activityDTO){
+        ActivityDTO createdActivity = activityService.createActivity(activityDTO);
+        return new ResponseEntity<>(createdActivity, HttpStatus.CREATED);
     }
 
     @PutMapping("/activity/{id}")

@@ -4,9 +4,11 @@ package com.example.adventurexp_backend.service;
 import com.example.adventurexp_backend.dto.BookingDTO;
 import com.example.adventurexp_backend.dto.BookingConverter;
 import com.example.adventurexp_backend.dto.BookingDTO;
+import com.example.adventurexp_backend.dto.EmployeeDTO;
 import com.example.adventurexp_backend.exception.NotFoundException;
 import com.example.adventurexp_backend.model.Booking;
 import com.example.adventurexp_backend.model.Booking;
+import com.example.adventurexp_backend.model.Employee;
 import com.example.adventurexp_backend.repository.ActivityRepository;
 import com.example.adventurexp_backend.repository.BookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +57,12 @@ public class BookingService {
                 throw new NotFoundException("Booking not found with id " + id);
             }
         }
+    public BookingDTO createBooking(BookingDTO bookingDTO){
+        Booking bookingToSave = bookingConverter.toEntity(bookingDTO);
+        bookingToSave.setBookingId(0);
+        Booking savedEmployee = bookingRepository.save(bookingToSave);
+        return bookingConverter.toDTO(savedEmployee);
+    }
 
         public void deleteBooking(int id) {
             Optional<Booking> booking = bookingRepository.findById(id);

@@ -1,8 +1,10 @@
 package com.example.adventurexp_backend.service;
 import com.example.adventurexp_backend.dto.ActivityConverter;
 import com.example.adventurexp_backend.dto.ActivityDTO;
+import com.example.adventurexp_backend.dto.EmployeeDTO;
 import com.example.adventurexp_backend.exception.NotFoundException;
 import com.example.adventurexp_backend.model.Activity;
+import com.example.adventurexp_backend.model.Employee;
 import com.example.adventurexp_backend.repository.ActivityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +34,13 @@ public class ActivityService {
         } else {
             throw new NotFoundException("Activity not found with Id " + id);
         }
+    }
+
+    public ActivityDTO createActivity(ActivityDTO activityDTO){
+        Activity activityToSave = activityConverter.toEntity(activityDTO);
+        activityToSave.setId(0);
+        Activity savedActivity = activityRepository.save(activityToSave);
+        return activityConverter.toDTO(savedActivity);
     }
 
     public List<ActivityDTO> getAllActivities() {

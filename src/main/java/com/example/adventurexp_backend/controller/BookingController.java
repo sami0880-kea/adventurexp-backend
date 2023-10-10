@@ -2,6 +2,7 @@ package com.example.adventurexp_backend.controller;
 
 import com.example.adventurexp_backend.dto.BookingDTO;
 import com.example.adventurexp_backend.dto.BookingDTO;
+import com.example.adventurexp_backend.dto.EmployeeDTO;
 import com.example.adventurexp_backend.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class BookingController {
         BookingDTO bookingDTO = bookingService.getBookingById(id);
         return ResponseEntity.ok(bookingDTO);
     }
-    @GetMapping("/booking")
+    @GetMapping("/bookings")
     public ResponseEntity<List<BookingDTO>> getBookings() {
         List<BookingDTO> bookings = bookingService.getAllBookings();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
@@ -31,6 +32,12 @@ public class BookingController {
     public ResponseEntity<BookingDTO> putBooking(@PathVariable("id")int id, @RequestBody BookingDTO bookingDTO){
         BookingDTO updatedBookingDTO = bookingService.updateBooking(id, bookingDTO);
         return ResponseEntity.ok(updatedBookingDTO);
+    }
+
+    @PostMapping("/booking")
+    public ResponseEntity<BookingDTO> postEmployee(@RequestBody BookingDTO bookingDTO){
+        BookingDTO createdBooking = bookingService.createBooking(bookingDTO);
+        return new ResponseEntity<>(createdBooking, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/booking/{id}")
