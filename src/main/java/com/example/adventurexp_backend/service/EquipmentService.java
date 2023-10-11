@@ -60,5 +60,4 @@ public class EquipmentService {
         return equipmentConverter.toDTO(savedEquipment);
     }
 
-
 }
