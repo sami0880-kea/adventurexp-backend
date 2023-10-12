@@ -19,6 +19,7 @@ CREATE TABLE Booking (
                          phone_number INT,
                          date DATE,
                          time TIME,
+                         duration INT,
                          comment TEXT,
                          activity_id INT,
                          total INT,

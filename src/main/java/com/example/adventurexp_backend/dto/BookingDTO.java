@@ -10,6 +10,7 @@ public record BookingDTO(int bookingid,
                          int phoneNumber,
                          Date date,
                          LocalTime time,
+                         int duration,
                          String comment,
                          int activityId,
                          int total) {

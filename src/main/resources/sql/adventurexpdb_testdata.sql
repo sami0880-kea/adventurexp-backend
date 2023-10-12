@@ -12,10 +12,10 @@ VALUES
     ('Paintball-marker', 30, 3),
     ('Sumo-drakter', 8, 4);
 
-INSERT INTO Booking (name, participants, email, phone_number, date, time, comment, activity_id, total)
+INSERT INTO Booking (name, participants, email, phone_number, date, time, duration, comment, activity_id, total)
 VALUES
-    ('John Doe', 4, 'john@example.com', 71829382, '2023-10-10', '14:00:00', 'Vi vil gerne konkurrere!', 1, 600),
-    ('Alice Smith', 2, 'alice@example.com', 50281929, '2023-10-12', '16:30:00', 'Vi er en lille gruppe.', 2, 600);
+    ('John Doe', 4, 'john@example.com', 71829382, '2023-10-10', '14:00:00', 30, 'Vi vil gerne konkurrere!', 1, 600),
+    ('Alice Smith', 2, 'alice@example.com', 50281929, '2023-10-12', '16:30:00', 60, 'Vi er en lille gruppe.', 2, 600);
 
 INSERT INTO Employee (name, email, password)
 VALUES

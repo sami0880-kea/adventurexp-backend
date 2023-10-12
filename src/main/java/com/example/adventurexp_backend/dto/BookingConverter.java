@@ -19,6 +19,7 @@ public class BookingConverter {
                 bookingDTO.phoneNumber(),
                 bookingDTO.date(),
                 bookingDTO.time(),
+                bookingDTO.duration(),
                 bookingDTO.comment(),
                 bookingDTO.activityId(),
                 bookingDTO.total()
@@ -34,6 +35,7 @@ public class BookingConverter {
                 booking.getPhoneNumber(),
                 booking.getDate(),
                 booking.getTime(),
+                booking.getDuration(),
                 booking.getComment(),
                 booking.getActivityId(),
                 booking.getTotal()

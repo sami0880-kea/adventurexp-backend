@@ -25,6 +25,7 @@ public class Booking {
     private int phoneNumber;
     private Date date;
     private LocalTime time;
+    private int duration;
     private String comment;
     private int activityId;
     private int total;
