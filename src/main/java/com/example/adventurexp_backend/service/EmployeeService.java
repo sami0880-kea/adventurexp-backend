@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,6 @@ public class EmployeeService {
     public EmployeeDTO getEmployeeById(int id) {
         Optional<Employee> employeeOptional = employeeRepository.findById(id);
         if (employeeOptional.isPresent()) {
-            Employee employee = employeeOptional.get();
             return employeeConverter.toDTO(employeeOptional.get());
         } else {
             throw new NotFoundException("Employee not found with Id " + id);
@@ -67,5 +67,20 @@ public class EmployeeService {
             throw new NotFoundException("Employee not found with id: " + id);
         }
     }
+
+    public boolean verifyLogin(String email, String password) {
+        Optional<Employee> optionalEmployee = employeeRepository.findByEmail(email);
+        if (optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+            if(Objects.equals(employee.getPassword(), password)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return false;
+
+    }
+
 }
 

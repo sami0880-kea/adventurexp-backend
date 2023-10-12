@@ -2,6 +2,7 @@ package com.example.adventurexp_backend.controller;
 
 import com.example.adventurexp_backend.dto.EmployeeDTO;
 import com.example.adventurexp_backend.service.EmployeeService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpStatus;
